@@ -1,0 +1,47 @@
+package com.two;
+import java.util.*;
+/*
+ * 寻找各个数开头的最大值，进行比较
+ * 
+ * */
+public class two {
+	/*public static int sum() {
+		
+		return max1;
+	}*/
+	
+	public static void main(String[] args)
+	{
+		Scanner input=new Scanner(System.in);
+		int n=0;
+		System.out.print("请输入数的个数：");
+		n=input.nextInt();
+		System.out.print("请输入"+n+"个数：");
+		int a[]=new int[5];
+		for(int i=0;i<5;i++) {               //输入
+			a[i]=input.nextInt();
+		}                     
+		int max[]=new int[a.length];
+		for(int i=0;i<max.length;i++) {
+			max[i]=0;
+		}
+		int sum=0;
+		for(int i=0;i<a.length;i++) {       	//以各个数开头的最大值
+			max[i]=a[i];
+			sum=max[i];
+			if(i<a.length) {
+				for(int j=i+1;j<a.length;j++) {
+					sum=sum+a[j];
+					if(max[i]<sum)max[i]=sum;
+				}
+			}
+		}
+		int max1=max[0];
+		for(int i=1;i<max.length;i++) {
+			if(max1<=max[i]) {
+				max1=max[i];
+			}
+		}
+		System.out.println(max1);
+	}
+}
